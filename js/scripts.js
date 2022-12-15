@@ -14,41 +14,42 @@ let pokemonRepository = (function(){
         return pokemonList;
       }
   
-      return {
+    /* created pokemon list with buttons as items displaying the name */
+      function addListItem(pokemon){
+        let pokemonList = document.querySelector('.pokemon-list');
+        let listItem = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerText = pokemon.name;
+        button.classList.add('button-class');
+        listItem.appendChild(button);
+        pokemonList.appendChild(listItem);
+    /* added event listener: returns all pokemon info to console when button is clicked */
+        button.addEventListener('click', function() {
+          showDetails(pokemon);
+        });
+        
+      }
+    
+      function showDetails(pokemon){
+        console.log(pokemon);
+      }
+    
+    return {
         add: add,
-        getAll: getAll
+        getAll: getAll,
+        addListItem: addListItem
       };
   
   })();
   
   console.log(pokemonRepository.getAll());
   
+  /* use add function to create new Pokemons to my list */
   pokemonRepository.add({ name: 'Bulbasaur', height: 0.7, type: 'grass'});
 
-  
-// /* OLD CODE */
-// /* tell 'for-loop' code to look to length of variable array above first */
-// for (let i=0; i < pokemonList.length; i++){
-//   /* set condition for specific key-value of objects in array */
-//     if (pokemonList[i].height >= 1){
-//       console.log(pokemonList[i].name + " (height: " + pokemonList[i].height + ") - Wow, that's big!");
-//   /* inserted html break line tag to display each object on a new line  */
-//       document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + ") - Wow, that's big!" + "<br>");
-//   /* only need to use 'else' rather than 'else-if' as we want the output to be on just one object  */
-//   } else {
-//       console.log(pokemonList[i].name + " (height: " + pokemonList[i].height + ")");
-//   /* inserted html break line tag to display each object on a new line  */
-//       document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + ")" + "<br>")
-//   }
-//   }
-
-/* forEach loop uses pokemonRepository.getAll() instead of pokemonList to retrieve data now that array is protected by IIFE*/
+/* forEach loop iterates over addListItem function*/
 pokemonRepository.getAll().forEach(function(pokemon) {
-  if (pokemon.height >= 1) {
-    document.write(pokemon.name + " " + " (height: " + pokemon.height + ") - Wow, that's big!" + "<br>");
-  }else {
-      document.write(pokemon.name + " " + "(height: " + pokemon.height + ")" + "<br>");
-    }
+  pokemonRepository.addListItem(pokemon);
   
 });
 
