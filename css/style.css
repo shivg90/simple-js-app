@@ -13,7 +13,7 @@ highlight colour #433fbc dark blue
   --white: #ffffff;
   --text-color: #000000;
   --highlight-color: #433fbc;
-  --button-border-color: rgba(0, 0, 0, 0.3);
+  --button-border-color: rgba(0, 0, 0, 0.6);
 }
 
 body {
@@ -25,21 +25,33 @@ body {
 }
 
 .button-class {
-border: none;
-background-color: var(--primary-color);
-color: var(--text-color);
-text-decoration: none;
-display: inline-block;
-font-family: inherit;
-padding: 10px;
-border-radius: 3px;
-border-bottom: 2px solid var(--button-border-color);
-width: 200px;
-text-align: left;
-margin: 8px;
+  width: 200px;
+  border: solid;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  text-decoration: none;
+  display: inline-block;
+  font-family: inherit;
+  padding: 10px;
+  border-radius: 10px;
+  border-color: var(--button-border-color);
+  text-align: center;
+  margin: 15px;
+}
 
+button:hover {
+  background-color: var(--highlight-color);
+  transition-duration: 1.5s;
+  cursor:pointer;
 }
 
 .pokemon-list {
-list-style-type: none;
+  list-style-type: none;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 250px);
+}
+
+.main-content {
+  text-align: center;
 }
