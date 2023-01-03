@@ -28,8 +28,15 @@ let pokemonRepository = (function(){
         '<button class="pokemon-button btn btn-info" data-target="#pokemon-modal" data-toggle="modal">' +
           pokemon.name +
           '</button>'
-      );
-        
+        );
+
+          listItem.append(button);
+          pokemonListElement.append(listItem);
+
+          button.on('click', function() {
+            showDetails(pokemon);
+          });
+      
       }
   
     /* getting data from the API using promise */  
