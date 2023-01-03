@@ -65,9 +65,27 @@ let pokemonRepository = (function(){
     
       function showDetails(pokemon){
         loadDetails(pokemon).then(function(){
-          showModal(pokemon);
-          // console.log(pokemon);
+          showDetailsModal(pokemon);
         });
+      }
+
+      function showDetailsModal(pokemon) {
+        let modalBody = $('.modal-body');
+        let modalTitle = $('.modal-title');
+
+        modalBody.empty();
+        modalTitle.text(pokemon.name);
+
+        let height = $('<p>' + 'Height:  ' + pokemon.height + '</p>');
+        let image = $('<img class="pokemon-img" src="' + pokemon.imageUrl + '" />');
+        let types = $('<p>' + 'Types:  ' + pokemon.types + '</p>');
+        let abilities = $('<p>' + 'Abilities: ' + pokemon.abilities + '</p>');
+        
+        modalBody.append(image);
+        modalBody.append(height);
+        modalBody.append(types);
+        modalBody.append(abilities);
+
       }
 
       
@@ -79,6 +97,7 @@ let pokemonRepository = (function(){
         loadList: loadList,
         loadDetails: loadDetails,
         showDetails: showDetails,
+        showDetailsModal: showDetailsModal
       };
   
   })();
