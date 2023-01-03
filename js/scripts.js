@@ -21,19 +21,14 @@ let pokemonRepository = (function(){
         return pokemonList;
       }
   
-    /* created pokemon list with buttons as items displaying the name */
+    /* calls list group item and button from bootstrap */
       function addListItem(pokemon){
-        let pokemonList = document.querySelector('.pokemon-list');
-        let listItem = document.createElement('li');
-        let button = document.createElement('button');
-        button.innerText = pokemon.name;
-        button.classList.add('button-class');
-        listItem.appendChild(button);
-        pokemonList.appendChild(listItem);
-    /* added event listener: returns all pokemon info to console when button is clicked */
-        button.addEventListener('click', function(event) {
-          showDetails(pokemon);
-        });
+          let listItem = $('<li class="list-group-item"></li>');
+          let button = $(
+        '<button class="pokemon-button btn btn-info" data-target="#pokemon-modal" data-toggle="modal">' +
+          pokemon.name +
+          '</button>'
+      );
         
       }
   
