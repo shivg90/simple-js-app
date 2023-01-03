@@ -6,6 +6,8 @@ let pokemonRepository = (function(){
 
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     
+  let pokemonListElement = $('.pokemon-list');
+  
   /* data to be fetched from API */
       function add(pokemon) {
       pokemonList.push(pokemon);
