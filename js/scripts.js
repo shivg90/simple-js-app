@@ -7,7 +7,7 @@ let pokemonRepository = (function(){
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     
   let pokemonListElement = $('.pokemon-list');
-  
+
   /* data to be fetched from API */
       function add(pokemon) {
       pokemonList.push(pokemon);
@@ -59,7 +59,8 @@ let pokemonRepository = (function(){
         }).then(function (details) {
           item.imageUrl = details.sprites.front_default;
           item.height = details.height;
-          item.types = details.types;
+          item.types = details.types.map((type) => type.type.name);
+          item.abilities = details.abilities.map((abilities) => abilities.ability.name);
         }).catch(function (e) {
           console.error(e);
         });
