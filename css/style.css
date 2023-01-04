@@ -59,20 +59,35 @@ grid-template-columns: repeat(auto-fit, 250px);
 
 .main-content {
 text-align: center;
-margin-top: 70px;
+margin-top: 80px;
 }
 
 
 .pokemon-button {
   width: 30%;
+  background-color: var(--highlight-color) !important;
+}
+
+.pokemon-button:hover {
+  transition-duration: 1s !important;
+  transition-property: opacity !important;
+  opacity: 0.7;
+}
+
+.btn-outline-info {
+  color: var(--white) !important;
+  border-color: var(--white) !important;
+}
+
+.input-group-btn {
+  background-color: none;
 }
 
 .modal-dialog {
   border: 8px solid;
-  border-color: var(--secondary-color);
+  border-color: var(--highlight-color);
   border-radius: 12px;
   z-index: 999;
-  
 }
 
 
