@@ -56,9 +56,11 @@ h1 {
 }
 
 .pokemon-button:hover {
+  background-color: #908cff;
   transition-duration: 0s;
-  transition-property: opacity;
-  opacity: 0.8;
+  /* transition-property: opacity;
+  opacity: 0.8; */
+
 }
 
 .btn-outline-info {
