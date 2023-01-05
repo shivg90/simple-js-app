@@ -52,6 +52,7 @@ h1 {
 /* removes row border lines in background */
 .list-group-item {
   border: none;
+  background-color: var(--primary-color);
 }
 
 .pokemon-button:hover {
