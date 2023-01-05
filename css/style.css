@@ -55,7 +55,6 @@ h1 {
   background-color: var(--primary-color);
 }
 
-button:hover,
 .pokemon-button:hover {
   transition-duration: 0s;
   transition-property: opacity;
