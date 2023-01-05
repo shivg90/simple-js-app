@@ -4,21 +4,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Simple JS App</title>
+
+    <!--implement bootstrap stylesheet above own CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Work+Sans:ital,wght@0,100;0,400;0,700;1,400&display=swap" rel="stylesheet">
   </head>
+
   <body>
+    <!--create bootstrap navbar; fixed position at top of screen and styled dark-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"> 
+      <!--container fluid separates brand from search buttons-->
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Pokedex</a>
         <form class="form-inline">
-        <div class="input-group col-md-12">
-         <input class="form-control rounded mr-sm-2 my-2 my-sm-0" type="search" placeholder="Search Pokemon" aria-label="Search">
-           <span class="input-group-btn"> 
-             <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-           </span>
-        </div>
+          <div class="input-group col-md-12">
+            <input class="form-control rounded mr-sm-2 my-2 my-sm-0" type="search" placeholder="Search Pokemon" aria-label="Search">
+            <!--bootstrap class input-group-btn groups the search button to the search bar-->
+              <span class="input-group-btn"> 
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+              </span>
+          </div>
         </form>
       </div>
     </nav>
@@ -28,6 +34,7 @@
       <ul class="pokemon-list list-group"></ul>
     </div>
     
+    <!--modal code for pokemon details-->
     <div class="modal fade show" id="pokemon-modal" tabindex="-1" role="dialog" aria-labelledby="pokemon-modal"  padding-right: 18px; aria-modal="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -45,6 +52,7 @@
       </div>
     </div>
 
+    <!--links to js and jquery scripts used-->
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
