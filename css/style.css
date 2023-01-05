@@ -68,6 +68,7 @@ h1 {
 .btn-outline-info:hover {
   background-color: var(--transition-color);
   transition-duration: 0s;
+  border: none;
 }
 
 .input-group-btn {
