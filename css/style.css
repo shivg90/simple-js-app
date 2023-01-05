@@ -42,14 +42,14 @@ body {
 
 /* removes row border lines in background */
 .list-group-item {
-    border: none !important;
-    background-color: var(--primary-color) !important;
+  border: none !important;
+  background-color: var(--primary-color) !important;
 }
 
 .pokemon-button:hover {
-transition-duration: 0s !important;
-transition-property: opacity !important;
-opacity: 0.8;
+  transition-duration: 0s !important;
+  transition-property: opacity !important;
+  opacity: 0.8;
 }
 
 .btn-outline-info {
