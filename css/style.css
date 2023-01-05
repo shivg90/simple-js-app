@@ -1,29 +1,84 @@
 /* 
 Colours to use
-Background-colour: #ffffff white
 Text #000000 black
-primary-colour: #bcbcbc light grey
+primary-colour: #d3d3d3 light grey
 secondary-colour: #5b5b5b dark grey
-highlight colour #433fbc dark blue
+highlight colour #433fbc dark purple
+transition colour #908cff lighter purple
 */
 
 :root{
-  --primary-color: #bcbcbc;
+  --primary-color: #d3d3d3;
   --secondary-color: #5b5b5b;
   --white: #ffffff;
   --text-color: #000000;
   --highlight-color: #433fbc;
   --button-border-color: rgba(0, 0, 0, 0.6);
+  --transition-color: #908cff;
 }
 
 body {
-  background-color: var(--white);
   font-family: 'Work Sans', sans-serif;
-  color: var(--text-color);
-  font-size: 14px;
-  line-height: 1.4;
+  background-color: var(--primary-color) !important;
 }
 
+.main-content {
+  text-align: center;
+  margin-top: 80px; 
+  background-color: var(--primary-color) !important;
+}
+
+.pokemon-header {
+  padding: 10px;
+}
+
+.pokemon-button {
+  width: 30%;
+  background-color: var(--highlight-color) !important;
+  font-size: 18px !important;
+  /* removes bootstrap button border color */
+  border: none !important;
+}
+
+/* removes row border lines in background */
+.list-group-item {
+    border: none !important;
+    background-color: var(--primary-color) !important;
+}
+
+.pokemon-button:hover {
+transition-duration: 0s !important;
+transition-property: opacity !important;
+opacity: 0.8;
+}
+
+.btn-outline-info {
+  color: var(--white) !important;
+  border-color: var(--white) !important;
+}
+
+.input-group-btn {
+  background-color: none;
+}
+
+.modal {
+  text-align: center;
+}
+
+.pokemon-img {
+  width: 200px;
+  height: 200px;
+}
+
+.modal-dialog {
+  border: 8px solid;
+  border-radius: 12px;
+  border-color: var(--highlight-color);
+  
+}
+
+
+/* old CSS code before bootstrap was implemented */
 /* .button-class {
 width: 200px;
 border: solid;
@@ -56,40 +111,6 @@ display: grid;
 justify-content: center;
 grid-template-columns: repeat(auto-fit, 250px);
 } */
-
-.main-content {
-text-align: center;
-margin-top: 80px;
-}
-
-
-.pokemon-button {
-  width: 30%;
-  background-color: var(--highlight-color) !important;
-}
-
-.pokemon-button:hover {
-  transition-duration: 1s !important;
-  transition-property: opacity !important;
-  opacity: 0.7;
-}
-
-.btn-outline-info {
-  color: var(--white) !important;
-  border-color: var(--white) !important;
-}
-
-.input-group-btn {
-  background-color: none;
-}
-
-.modal-dialog {
-  border: 8px solid;
-  border-color: var(--highlight-color);
-  border-radius: 12px;
-  z-index: 999;
-}
-
 
 /* #modal-container {
 display: none;
