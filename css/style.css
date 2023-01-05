@@ -19,13 +19,19 @@ transition colour #908cff lighter purple
 
 body {
   font-family: 'Work Sans', sans-serif;
-  background-color: var(--primary-color) !important;
+  background-color: var(--primary-color);
+  font-weight: 400; 
+  font-size: 30px; 
+  line-height: 1.4; 
+  margin-top: 80px;
 }
 
-.main-content {
+.pokedex {
   text-align: center;
   margin-top: 80px; 
-  background-color: var(--primary-color) !important;
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
 }
 
 .pokemon-header {
@@ -34,27 +40,27 @@ body {
 
 .pokemon-button {
   width: 30%;
-  background-color: var(--highlight-color) !important;
-  font-size: 18px !important;
+  background-color: var(--highlight-color);
+  font-size: 18px;
   /* removes bootstrap button border color */
-  border: none !important;
+  border: none;
 }
 
 /* removes row border lines in background */
 .list-group-item {
   border: none !important;
-  background-color: var(--primary-color) !important;
+  background-color: var(--primary-color);
 }
 
 .pokemon-button:hover {
-  transition-duration: 0s !important;
-  transition-property: opacity !important;
+  transition-duration: 0s;
+  transition-property: opacity;
   opacity: 0.8;
 }
 
 .btn-outline-info {
-  color: var(--white) !important;
-  border-color: var(--white) !important;
+  color: var(--white);
+  border-color: var(--white);
 }
 
 .input-group-btn {
