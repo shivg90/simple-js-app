@@ -56,16 +56,18 @@ h1 {
 }
 
 .pokemon-button:hover {
-  background-color: #908cff;
+  background-color: var(--transition-color);
   transition-duration: 0s;
-  /* transition-property: opacity;
-  opacity: 0.8; */
-
 }
 
 .btn-outline-info {
   color: var(--white);
   border-color: var(--white);
+}
+
+.btn-outline-info:hover {
+  background-color: var(--transition-color);
+  transition-duration: 0s;
 }
 
 .input-group-btn {
