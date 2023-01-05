@@ -1,6 +1,5 @@
 /* 
 Colours to use
-Text #000000 black
 primary-colour: #d3d3d3 light grey
 secondary-colour: #5b5b5b dark grey
 highlight colour #433fbc dark purple
@@ -11,9 +10,7 @@ transition colour #908cff lighter purple
   --primary-color: #d3d3d3;
   --secondary-color: #5b5b5b;
   --white: #ffffff;
-  --text-color: #000000;
   --highlight-color: #433fbc;
-  --button-border-color: rgba(0, 0, 0, 0.6);
   --transition-color: #908cff;
 }
 
@@ -40,6 +37,7 @@ h1 {
 
 .pokemon-header {
   padding: 10px;
+  font-weight: 700;
 }
 
 .pokemon-button {
