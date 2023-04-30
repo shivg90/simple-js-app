@@ -87,6 +87,33 @@ let pokemonRepository = (function(){
 
     }
 
+    /* enables search bar to return filtered results */
+    function search() {
+      if (input.trim() === '') {
+        // shows all list items when search input is empty
+        for (let i = 0; i < listItems.length; i++) {
+          const item = listItems[i];
+          item.style.display = '';
+        }
+        return;
+      }
+      let input = document.getElementById('search-input').value;
+      let list = document.getElementById('pokemon-list');
+      let listItems = list.getElementsByTagName('li');
+      // loops through list items to only show search input matches
+      for (let i = 0; i < listItems.length; i++) {
+        const item = listItems[i];
+        const itemText = item.textContent;
+        if (itemText.toLowerCase().indexOf(input.toLowerCase()) > -1) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      }
+    }
+  
+    document.getElementById('search-button').addEventListener('click', search);
+
       
     /* returned data from defined functions */
     return {
