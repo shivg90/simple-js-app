@@ -19,13 +19,13 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Pokedex</a>
         <form class="form-inline">
-          <div class="input-group col-md-12">
-            <input id="search-input" class="form-control rounded mr-sm-2 my-2 my-sm-0" type="text" placeholder="Search Pokemon" aria-label="Search">
+          <!--<div class="input-group col-md-12">-->
+            <input id="search-input" class="form-control rounded mr-sm-2 my-2 my-sm-0" type="search" placeholder="Search Pokemon" aria-label="Search">
             <!--bootstrap class input-group-btn groups the search button to the search bar-->
-              <span class="input-group-btn"> 
+               <!-- <span class="input-group-btn"> 
                 <button id="search-button" class="btn btn-outline-info my-2 my-sm-0" type="button">Search</button>
-              </span>
-          </div>
+              </span> -->
+         <!--</div> -->
         </form>
       </div>
     </nav>
@@ -35,7 +35,7 @@
     <div class="pokedex">
       <h1 class="pokemon-header display-4">Pokedex</h1>
       <!--added second class (list-group) into ul for bootstrap-->
-      <ul id="pokemon-list" class="pokemon-list list-group"></ul>
+      <ul id="pokemon-list" class="pokemon-list list-group-item"></ul>
     </div>
     
     <!--modal code for pokemon details-->

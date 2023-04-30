@@ -1,3 +1,5 @@
+
+
 /* defined new variable and wrapped in IIFE to eliminate code from global use*/
 let pokemonRepository = (function(){
 
@@ -8,8 +10,15 @@ let pokemonRepository = (function(){
 
   /* data to be fetched from API */
   function add(pokemon) {
+    if (
+      typeof pokemon === "object" &&
+      pokemon.name && pokemon.detailsUrl
+    ) {
       pokemonList.push(pokemon);
-  };
+    } else {
+      console.log("pokemon is not correct");
+    }
+  }
 
   function getAll() {
       return pokemonList;
@@ -17,11 +26,13 @@ let pokemonRepository = (function(){
   
     /* calls list group item and button from bootstrap */
   function addListItem(pokemon){
+      
       let listItem = $('<li class="list-group-item"></li>');
       let button = $('<button class="pokemon-button btn btn-info" data-target="#pokemon-modal" data-toggle="modal">' + pokemon.name + '</button>');
 
       listItem.append(button);
       pokemonListElement.append(listItem);
+     
 
     /* event listener to show pokemon details when clicked */
       button.on('click', function() {
@@ -85,35 +96,24 @@ let pokemonRepository = (function(){
       modalBody.append(types);
       modalBody.append(abilities);
 
-    }
+    } 
 
-    /* enables search bar to return filtered results */
-    function search() {
-      if (input.trim() === '') {
-        // shows all list items when search input is empty
-        for (let i = 0; i < listItems.length; i++) {
-          const item = listItems[i];
-          item.style.display = '';
-        }
-        return;
-      }
-      let input = document.getElementById('search-input').value;
-      let list = document.getElementById('pokemon-list');
-      let listItems = list.getElementsByTagName('li');
-      // loops through list items to only show search input matches
-      for (let i = 0; i < listItems.length; i++) {
-        const item = listItems[i];
-        const itemText = item.textContent;
-        if (itemText.toLowerCase().indexOf(input.toLowerCase()) > -1) {
-          item.style.display = '';
-        } else {
-          item.style.display = 'none';
-        }
-      }
-    }
-  
-    document.getElementById('search-button').addEventListener('click', search);
 
+    /* search bar to return filtered results */
+    const searchPokemon = document.querySelector('.search-input');
+    searchPokemon.addEventListener('keyup', (e) => {
+    e.preventDefault();
+    const filterValue = e.target.value.toLowerCase();
+    const pokemonListItems = document.querySelectorAll('.list-group-item');
+
+    pokemonListItems.forEach(function (item) {
+      if (item.innerText.toLowerCase().indexOf(filterValue) > -1) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
       
     /* returned data from defined functions */
     return {
@@ -129,12 +129,12 @@ let pokemonRepository = (function(){
   })();
 
   pokemonRepository.loadList().then(function() {
-/* forEach loop iterates over addListItem function*/
+    /* forEach loop iterates over addListItem function*/
     pokemonRepository.getAll().forEach(function(pokemon) {
       pokemonRepository.addListItem(pokemon);
   
     });
-});
+  });
 
 
   
