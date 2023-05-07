@@ -57,15 +57,17 @@ let pokemonRepository = (function(){
         })
   }
     /* loading details from API, define which details by "item." */
-    function loadDetails(item) {
-      let url = item.detailsUrl;
+    function loadDetails(pokemon) {
+      let url = pokemon.detailsUrl;
       return fetch(url).then(function (response) {
         return response.json();
       }).then(function (details) {
-          item.imageUrl = details.sprites.front_default;
-          item.height = details.height;
-          item.types = details.types.map((type) => type.type.name);
-          item.abilities = details.abilities.map((abilities) => abilities.ability.name);
+        pokemon.imageUrlFront = details.sprites.front_default;
+        pokemon.imageUrlBack = details.sprites.back_default;
+        pokemon.height = details.height;
+        pokemon.weight = details.weight;
+        pokemon.types = details.types.map((type) => type.type.name).join(', ');
+        pokemon.abilities = details.abilities.map((abilities) => abilities.ability.name).join(', ');
       }).catch(function (e) {
           console.error(e);
       });
@@ -73,7 +75,7 @@ let pokemonRepository = (function(){
     
     /* function for showing defined API details within modal layout */
     function showDetails(pokemon){
-      loadDetails(pokemon).then(function(){
+      loadDetails(item).then(function(){
         showDetailsModal(pokemon);
       });
     }
@@ -86,35 +88,36 @@ let pokemonRepository = (function(){
       modalBody.empty();
       modalTitle.text(pokemon.name);
 
-      let height = $('<p>' + 'Height:  ' + pokemon.height + '</p>');
-      let image = $('<img class="pokemon-img" src="' + pokemon.imageUrl + '" />');
-      let types = $('<p>' + 'Types:  ' + pokemon.types + '</p>');
-      let abilities = $('<p>' + 'Abilities: ' + pokemon.abilities + '</p>');
+      let heightElement = $('<p>' + 'Height:  ' + pokemon.height + '' + 'cm' + '</p>');
+      let weightElement = $('<p>' + 'weight: ' + pokemon.weight + '' + 'g' + '</p>');
+      let imageElementFront = $('<img class="pokemon-img" src="' + pokemon.imageUrlFront + '" />');
+      let imageElementBack = $('<img class="pokemon-img" src="' + pokemon.imageUrlBack + '" />');
+      let typeElement = $('<p>' + 'Types:  ' + pokemon.types + '</p>');
+      let abilitiesElement = $('<p>' + 'Abilities: ' + pokemon.abilities + '</p>');
         
-      modalBody.append(image);
-      modalBody.append(height);
-      modalBody.append(types);
-      modalBody.append(abilities);
+      modalBody.append(imageElementFront);
+      modalBody.append(imageElementBack);
+      modalBody.append(heightElement);
+      modalBody.append(weightElement);
+      modalBody.append(typeElement);
+      modalBody.append(abilitiesElement);
 
     } 
 
-
-    /* search bar to return filtered results */
-    const searchPokemon = document.querySelector('.search-input');
-    searchPokemon.addEventListener('keyup', (e) => {
-    e.preventDefault();
-    const filterValue = e.target.value.toLowerCase();
-    const pokemonListItems = document.querySelectorAll('.list-group-item');
-
-    pokemonListItems.forEach(function (item) {
-      if (item.innerText.toLowerCase().indexOf(filterValue) > -1) {
-        item.style.display = '';
-      } else {
-        item.style.display = 'none';
-      }
-    });
-  });
-      
+    const searchPokemon = document.getElementById('search-pokemon');
+      searchPokemon.addEventListener('keyup', (e) => {
+        e.preventDefault();
+        const pokemonListItems = document.querySelectorAll('.list-group-item');
+        const filterValue = e.target.value.toLowerCase();
+        pokemonListItems.forEach(function (item) {
+            if (item.innerText.toLowerCase().indexOf(filterValue) > -1) {
+                item.style.display = "";
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    })
+  
     /* returned data from defined functions */
     return {
         add: add,
@@ -123,7 +126,7 @@ let pokemonRepository = (function(){
         loadList: loadList,
         loadDetails: loadDetails,
         showDetails: showDetails,
-        showDetailsModal: showDetailsModal
+        showDetailsModal: showDetailsModal,
       };
   
   })();

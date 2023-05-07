@@ -12,30 +12,27 @@
   </head>
 
   <body>
-    <header>
+    
+    
     <!--create bootstrap navbar; fixed position at top of screen and styled dark-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"> 
       <!--container fluid separates brand from search buttons-->
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Pokedex</a>
         <form class="form-inline">
-          <!--<div class="input-group col-md-12">-->
-            <input id="search-input" class="form-control rounded mr-sm-2 my-2 my-sm-0" type="search" placeholder="Search Pokemon" aria-label="Search">
-            <!--bootstrap class input-group-btn groups the search button to the search bar-->
-               <!-- <span class="input-group-btn"> 
-                <button id="search-button" class="btn btn-outline-info my-2 my-sm-0" type="button">Search</button>
-              </span> -->
-         <!--</div> -->
+            <input id="search-pokemon" class="form-control rounded mr-sm-2 my-2 my-sm-0" type="search" placeholder="Search Pokemon" aria-label="Search">
+            
         </form>
       </div>
     </nav>
-  </header>
+  
 
-  <main>
+  
     <div class="pokedex">
       <h1 class="pokemon-header display-4">Pokedex</h1>
       <!--added second class (list-group) into ul for bootstrap-->
-      <ul id="pokemon-list" class="pokemon-list list-group-item"></ul>
+      <ul id="pokemon-list" class="pokemon-list list-group">
+      </ul>
     </div>
     
     <!--modal code for pokemon details-->
@@ -55,7 +52,7 @@
         </div>
       </div>
     </div>
-  </main>
+  
 
     <!--links to js and jquery scripts used-->
     <script
