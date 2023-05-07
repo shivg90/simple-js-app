@@ -55,17 +55,17 @@ let pokemonRepository = (function(){
         })
   }
     /* loading details from API, define which details by "item." */
-    function loadDetails(item) {
+    function loadDetails(pokemon) {
       let url = pokemon.detailsUrl;
       return fetch(url).then(function (response) {
         return response.json();
       }).then(function (details) {
-        item.imageUrlFront = details.sprites.front_default;
-        item.imageUrlBack = details.sprites.back_default;
-        item.height = details.height;
-        item.weight = details.weight;
-        item.types = details.types.map((type) => type.type.name);
-        item.abilities = details.abilities.map((abilities) => abilities.ability.name);
+        pokemon.imageUrlFront = details.sprites.front_default;
+        pokemon.imageUrlBack = details.sprites.back_default;
+        pokemon.height = details.height;
+        pokemon.weight = details.weight;
+        pokemon.types = details.types.map((type) => type.type.name);
+        pokemon.abilities = details.abilities.map((abilities) => abilities.ability.name);
       }).catch(function (e) {
           console.error(e);
       });
