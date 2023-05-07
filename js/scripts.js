@@ -40,6 +40,7 @@ let pokemonRepository = (function(){
   
     /* loading data from the API using promise */  
   function loadList() {
+      showLoadingMessage();
       return fetch(apiUrl).then(function (response) {
         return response.json();
       }).then(function (json) {
@@ -50,12 +51,15 @@ let pokemonRepository = (function(){
           };
             add(pokemon);
           });
+          hideLoadingMessage();
         }).catch(function (e) {
+          hideLoadingMessage();
           console.error(e);
         })
   }
     /* loading details from API, define which details by "item." */
     function loadDetails(pokemon) {
+      showLoadingMessage();
       let url = pokemon.detailsUrl;
       return fetch(url).then(function (response) {
         return response.json();
@@ -66,7 +70,9 @@ let pokemonRepository = (function(){
         pokemon.weight = details.weight;
         pokemon.types = details.types.map((type) => type.type.name);
         pokemon.abilities = details.abilities.map((abilities) => abilities.ability.name);
+        hideLoadingMessage();
       }).catch(function (e) {
+          hideLoadingMessage();
           console.error(e);
       });
     }
@@ -115,6 +121,18 @@ let pokemonRepository = (function(){
             }
         });
     })
+
+    function showLoadingMessage() {
+      const messageContainer = document.getElementById('loading-message').classList;
+      messageContainer.remove('hide-loading-message');
+      messageContainer.add('show-loading-message');
+    }
+  
+    function hideLoadingMessage() {
+      const messageContainer = document.getElementById('loading-message').classList;
+      messageContainer.remove('show-loading-message');
+      messageContainer.add('hide-loading-message');
+    }
   
     /* returned data from defined functions */
     return {
