@@ -7,15 +7,22 @@ transition colour #908cff lighter purple
 */
 
 :root{
-  --primary-color: #d3d3d3;
-  --secondary-color: #5b5b5b;
-  --white: #ffffff;
-  --highlight-color: #433fbc;
-  --transition-color: #908cff;
+  --primary-color: #ffffff;
+  --secondary-color: #00ff00;
+  --highlight-color: #6600CC;
+  --transition-color: #000000;
+}
+
+.navbar-custom {
+  background-color: #000000;
+}
+
+.navbar-brand {
+  color: #ffffff;
 }
 
 body {
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Sigmar One', cursive;
   background-color: var(--primary-color);
   font-weight: 400; 
   font-size: 18px; 
@@ -24,8 +31,7 @@ body {
 }
 
 h1 {
-  font-weight: 700;
-  font-size: 30px;
+  font-weight: 400;
 }
 
 .pokedex {
@@ -37,30 +43,46 @@ h1 {
 
 .pokemon-header {
   padding: 10px;
-  font-weight: 700;
+  font-weight: 400;
+  font-size: large;
 }
 
 .pokemon-button {
-  width: 40%;
-  background-color: var(--highlight-color);
+  width: 200px;
+  height: 50px;
+  background-color: var(--secondary-color);
   /* removes bootstrap button border color */
   border: none;
+  color: var(--highlight-color);
+  border: 2px solid var(--highlight-color);
+}
+
+.list-group {
+  list-style-type: none;
+  margin: 5px auto;
+  padding: 0;
+  text-align: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: grid;
 }
 
 /* removes row border lines in background */
 .list-group-item {
   border: none;
   background-color: var(--primary-color);
+  margin: 10px 10px;
+  
 }
 
 .pokemon-button:hover {
-  background-color: var(--transition-color);
+  background-color: black;
   transition-duration: 0s;
+  border: 2px solid var(--highlight-color);
 }
 
 .btn-outline-info {
-  color: var(--white);
-  border-color: var(--white);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 .btn-outline-info:hover {
@@ -89,5 +111,27 @@ h1 {
   
 }
 
+.form-inline {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.form-control {
+  border-color: #000000;
+}
+
+.form-control:hover {
+	cursor: pointer;
+  border-color: #000000;
+} 
+
+@media (max-width: 600px) {
+  .list-group {
+     grid-template-columns: 1fr 1fr;
+   }
+ }
 
 
