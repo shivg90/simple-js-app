@@ -21,6 +21,10 @@ transition colour #908cff lighter purple
   color: #ffffff;
 }
 
+.navbar-brand:hover {
+  color: #ffffff;
+}
+
 body {
   font-family: 'Sigmar One', cursive;
   background-color: var(--primary-color);
