@@ -1,5 +1,3 @@
-
-
 /* defined new variable and wrapped in IIFE to eliminate code from global use*/
 let pokemonRepository = (function(){
 
@@ -57,17 +55,17 @@ let pokemonRepository = (function(){
         })
   }
     /* loading details from API, define which details by "item." */
-    function loadDetails(pokemon) {
+    function loadDetails(item) {
       let url = pokemon.detailsUrl;
       return fetch(url).then(function (response) {
         return response.json();
       }).then(function (details) {
-        pokemon.imageUrlFront = details.sprites.front_default;
-        pokemon.imageUrlBack = details.sprites.back_default;
-        pokemon.height = details.height;
-        pokemon.weight = details.weight;
-        pokemon.types = details.types.map((type) => type.type.name).join(', ');
-        pokemon.abilities = details.abilities.map((abilities) => abilities.ability.name).join(', ');
+        item.imageUrlFront = details.sprites.front_default;
+        item.imageUrlBack = details.sprites.back_default;
+        item.height = details.height;
+        item.weight = details.weight;
+        item.types = details.types.map((type) => type.type.name);
+        item.abilities = details.abilities.map((abilities) => abilities.ability.name);
       }).catch(function (e) {
           console.error(e);
       });
@@ -75,7 +73,7 @@ let pokemonRepository = (function(){
     
     /* function for showing defined API details within modal layout */
     function showDetails(pokemon){
-      loadDetails(item).then(function(){
+      loadDetails(pokemon).then(function(){
         showDetailsModal(pokemon);
       });
     }
@@ -89,7 +87,7 @@ let pokemonRepository = (function(){
       modalTitle.text(pokemon.name);
 
       let heightElement = $('<p>' + 'Height:  ' + pokemon.height + '' + 'cm' + '</p>');
-      let weightElement = $('<p>' + 'weight: ' + pokemon.weight + '' + 'g' + '</p>');
+      let weightElement = $('<p>' + 'Weight: ' + pokemon.weight + '' + 'g' + '</p>');
       let imageElementFront = $('<img class="pokemon-img" src="' + pokemon.imageUrlFront + '" />');
       let imageElementBack = $('<img class="pokemon-img" src="' + pokemon.imageUrlBack + '" />');
       let typeElement = $('<p>' + 'Types:  ' + pokemon.types + '</p>');
